@@ -4,7 +4,7 @@
 
 .sor {
   --v0: #2a78d6; --v1: #eb6834; --v2: #1baf7a; --v3: #eda100; --v4: #e87ba4;
-  --bid: #157347; --ask: #b42318; --fair: #8f8c84;
+  --bid: #157347; --ask: #b42318; --fair: #8f8c84; --pass: #6250d6;
   --grid: var(--rule); --base: var(--rule-strong);
   position: relative;
   width: min(1100px, calc(100vw - 2 * var(--gutter, 24px)));
@@ -17,12 +17,12 @@
 @media (prefers-color-scheme: dark) {
   :root:where(:not([data-theme="light"])) .sor {
     --v0: #3987e5; --v1: #d95926; --v2: #199e70; --v3: #c98500; --v4: #d55181;
-    --bid: #5cc98c; --ask: #f47b6e; --fair: #77746c;
+    --bid: #5cc98c; --ask: #f47b6e; --fair: #77746c; --pass: #9085e9;
   }
 }
 :root[data-theme="dark"] .sor {
   --v0: #3987e5; --v1: #d95926; --v2: #199e70; --v3: #c98500; --v4: #d55181;
-  --bid: #5cc98c; --ask: #f47b6e; --fair: #77746c;
+  --bid: #5cc98c; --ask: #f47b6e; --fair: #77746c; --pass: #9085e9;
 }
 .sor *, .sor *::before, .sor *::after { box-sizing: border-box; }
 .sor h3 { margin: 0; font: 600 17px/1.3 var(--sans); color: var(--ink); }
@@ -86,7 +86,9 @@
 .sor .key--fair { background: var(--fair); }
 .sor .key--nbbo { width: 16px; height: 8px; border-radius: 2px; background: color-mix(in srgb, var(--accent) 16%, transparent); border-top: 2px solid var(--bid); border-bottom: 2px solid var(--ask); }
 .sor .mk { display: inline-block; flex: none; width: 10px; height: 10px; }
-.sor .mk--pass { border-radius: 50%; background: var(--accent); }
+.sor .mk--pass { border-radius: 50%; background: var(--pass); }
+.sor .seg { flex-wrap: wrap; }
+.sor .seg button { height: auto; min-height: 30px; padding: 6px 12px; line-height: 1.2; }
 .sor .mk--take { width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 10px solid var(--ink-2); }
 .sor .mk--dark { width: 9px; height: 9px; transform: rotate(45deg); background: var(--v4); }
 
