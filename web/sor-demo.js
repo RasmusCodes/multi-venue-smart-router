@@ -366,7 +366,8 @@
     const svg = s("svg", { viewBox: `0 0 ${W} ${H}`, width: W, height: H });
     plot.append(svg);
     const c = { grid: css(plot, "--grid"), base: css(plot, "--base"), bid: css(plot, "--bid"), ask: css(plot, "--ask"),
-      fair: css(plot, "--fair"), acc: css(plot, "--accent"), ink: css(plot, "--ink-2"), surf: css(plot, "--surface"), dark: css(plot, "--v4") };
+      fair: css(plot, "--fair"), acc: css(plot, "--accent"), pass: css(plot, "--pass"), ink: css(plot, "--ink-2"),
+      surf: css(plot, "--surface"), dark: css(plot, "--v4") };
     ticks.forEach((p) => {
       if (p < lo || p > hi) return;
       s("line", { x1: M.l, x2: W - M.r, y1: Y(p), y2: Y(p), stroke: c.grid, "stroke-width": 1, "shape-rendering": "crispEdges" }, svg);
@@ -402,7 +403,7 @@
       const x = X(t), y = Y(px);
       let node;
       if (vi === darkIdx) node = s("rect", { x: x - 4.5, y: y - 4.5, width: 9, height: 9, transform: `rotate(45 ${x} ${y})`, fill: c.dark, stroke: c.surf, "stroke-width": 2 }, svg);
-      else if (liq === "M") node = s("circle", { cx: x, cy: y, r: 4.5, fill: c.acc, stroke: c.surf, "stroke-width": 2 }, svg);
+      else if (liq === "M") node = s("circle", { cx: x, cy: y, r: 4.5, fill: c.pass, stroke: c.surf, "stroke-width": 2 }, svg);
       else node = s("path", { d: `M${x - 5.5},${y + 4.5}L${x + 5.5},${y + 4.5}L${x},${y - 5.5}Z`, fill: c.ink, stroke: c.surf, "stroke-width": 1.5, "stroke-linejoin": "round" }, svg);
       marks.push({ x, y, f, node });
     });
