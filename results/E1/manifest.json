@@ -1,0 +1,29 @@
+{
+ "experiment": "E1",
+ "title": "Taking liquidity: routing a marketable slice",
+ "version": "0.1.0",
+ "python": "3.12.10",
+ "platform": "Windows-11-10.0.26200-SP0",
+ "seeds": [
+  1,
+  300
+ ],
+ "runs": [
+  {
+   "label": "baseline",
+   "scenario": "baseline",
+   "parent": {
+    "side": 0,
+    "qty": 20000,
+    "horizon_s": 300.0,
+    "slices": 5,
+    "tail_s": 60.0
+   },
+   "overrides": null,
+   "episodes": 1500,
+   "seconds": 161.4
+  }
+ ],
+ "started": "2026-11-21 16:54:40",
+ "finished": "2026-11-21 16:57:22"
+}

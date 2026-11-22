@@ -1,0 +1,71 @@
+{
+ "experiment": "E5",
+ "title": "Robustness across market regimes",
+ "version": "0.1.0",
+ "python": "3.12.10",
+ "platform": "Windows-11-10.0.26200-SP0",
+ "seeds": [
+  1,
+  200
+ ],
+ "runs": [
+  {
+   "label": "fee_cap_10",
+   "scenario": "fee_cap_10",
+   "parent": {
+    "side": 0,
+    "qty": 20000,
+    "horizon_s": 300.0,
+    "slices": 20,
+    "tail_s": 60.0
+   },
+   "overrides": null,
+   "episodes": 600,
+   "seconds": 87.0
+  },
+  {
+   "label": "fast_fade",
+   "scenario": "fast_fade",
+   "parent": {
+    "side": 0,
+    "qty": 20000,
+    "horizon_s": 300.0,
+    "slices": 20,
+    "tail_s": 60.0
+   },
+   "overrides": null,
+   "episodes": 600,
+   "seconds": 82.7
+  },
+  {
+   "label": "high_vol",
+   "scenario": "high_vol",
+   "parent": {
+    "side": 0,
+    "qty": 20000,
+    "horizon_s": 300.0,
+    "slices": 20,
+    "tail_s": 60.0
+   },
+   "overrides": null,
+   "episodes": 600,
+   "seconds": 80.0
+  },
+  {
+   "label": "wide_latency",
+   "scenario": "wide_latency",
+   "parent": {
+    "side": 0,
+    "qty": 20000,
+    "horizon_s": 300.0,
+    "slices": 20,
+    "tail_s": 60.0
+   },
+   "overrides": null,
+   "episodes": 600,
+   "seconds": 76.9
+  }
+ ],
+ "started": "2026-11-21 17:05:28",
+ "finished": "2026-11-21 17:10:54"
+}

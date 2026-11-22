@@ -1,0 +1,45 @@
+{
+ "experiment": "E4",
+ "title": "Headline: the smart router against naive routers",
+ "version": "0.1.0",
+ "python": "3.12.10",
+ "platform": "Windows-11-10.0.26200-SP0",
+ "seeds": [
+  1,
+  300
+ ],
+ "runs": [
+  {
+   "label": "patient",
+   "scenario": "baseline",
+   "parent": {
+    "side": 0,
+    "qty": 20000,
+    "horizon_s": 300.0,
+    "slices": 20,
+    "tail_s": 60.0
+   },
+   "overrides": null,
+   "episodes": 900,
+   "seconds": 100.2
+  },
+  {
+   "label": "urgent",
+   "scenario": "baseline",
+   "parent": {
+    "side": 0,
+    "qty": 20000,
+    "horizon_s": 300.0,
+    "slices": 5,
+    "tail_s": 60.0
+   },
+   "overrides": {
+    "wait_frac": 0.1875
+   },
+   "episodes": 900,
+   "seconds": 97.4
+  }
+ ],
+ "started": "2026-11-21 17:02:10",
+ "finished": "2026-11-21 17:05:28"
+}

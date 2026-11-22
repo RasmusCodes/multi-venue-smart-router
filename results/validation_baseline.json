@@ -1,0 +1,50 @@
+{
+ "scenario": "baseline",
+ "seeds": 20,
+ "seconds_per_seed": 360.0,
+ "one_tick_share": 0.9774241919360214,
+ "mean_spread_bps": 2.046039551560124,
+ "venues": {
+  "ALPHA": {
+   "at_nbbo_bid": 0.9347550816394535,
+   "at_nbbo_ask": 0.9271576141286237,
+   "depth_at_nbbo": 1803.7994845729831,
+   "volume_share": 0.3127253191579602,
+   "make_fee": -20,
+   "take_fee": 30
+  },
+  "BRAVO": {
+   "at_nbbo_bid": 0.9846551149616795,
+   "at_nbbo_ask": 0.9856547817394202,
+   "depth_at_nbbo": 2325.5593701906,
+   "volume_share": 0.3205858651548782,
+   "make_fee": -30,
+   "take_fee": 30
+  },
+  "CHARLIE": {
+   "at_nbbo_bid": 0.46774408530489836,
+   "at_nbbo_ask": 0.43242252582472507,
+   "depth_at_nbbo": 504.33664026060563,
+   "volume_share": 0.1591477810922766,
+   "make_fee": 20,
+   "take_fee": -15
+  },
+  "DELTA": {
+   "at_nbbo_bid": 0.8460846384538487,
+   "at_nbbo_ask": 0.8267577474175275,
+   "depth_at_nbbo": 764.4994223337716,
+   "volume_share": 0.16600455233059533,
+   "make_fee": -10,
+   "take_fee": 10
+  }
+ },
+ "taker_share": {
+  "uninformed takers": 0.7758189246886178,
+  "latency arbitrage": 0.21875220901135256,
+  "dark-pool arrivals": 0.0054288663000296895
+ },
+ "dark_volume_share": 0.04153648226428965,
+ "fades_per_min": 31.425,
+ "jumps_per_min": 24.25,
+ "daily_vol_pct": 1.677817641275749
+}
