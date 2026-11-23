@@ -1,6 +1,6 @@
 # Results
 
-Generated 2026-11-21 by `python -m smartrouter report` from the experiment outputs in `results/`. The hypotheses, metric, seeds and decision rules were fixed in [the pre-registration](../docs/PREREGISTRATION.md) before any evaluation seed was run. Everything here is about the simulated market described in [the model](../docs/MODEL.md); nothing is a claim about live trading.
+Built by `python -m smartrouter report` from the evaluation run of 2026-11-21 (outputs in `results/`). The hypotheses, metric, seeds and decision rules were fixed in [the pre-registration](../docs/PREREGISTRATION.md) before any evaluation seed was run. Everything here is about the simulated market described in [the model](../docs/MODEL.md); nothing is a claim about live trading.
 
 ## Short answer
 

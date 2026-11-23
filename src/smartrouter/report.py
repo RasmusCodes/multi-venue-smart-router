@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import json
 import math
-import time
 from pathlib import Path
 
 import numpy as np
@@ -92,7 +91,7 @@ def _style():
     import matplotlib.pyplot as plt
 
     plt.rcParams.update({
-        "svg.fonttype": "none", "font.family": "sans-serif",
+        "svg.fonttype": "none", "svg.hashsalt": "smartrouter", "font.family": "sans-serif",
         "font.sans-serif": ["Inter", "Segoe UI", "Helvetica", "Arial", "DejaVu Sans"],
         "font.size": 10.5, "axes.edgecolor": BASE, "axes.labelcolor": INK2, "xtick.color": MUTED,
         "ytick.color": INK2, "axes.spines.top": False, "axes.spines.right": False, "axes.grid": False,
@@ -120,7 +119,7 @@ def fig_forest(rows, path, title):
     ax.set_xlabel("Shortfall difference, bps (negative = cheaper)")
     fig.suptitle(title, x=0.01, ha="left", color=INK, fontsize=11.5, fontweight="bold")
     fig.tight_layout()
-    fig.savefig(path)
+    fig.savefig(path, metadata={"Date": None})
     plt.close(fig)
 
 
@@ -140,7 +139,7 @@ def fig_fades(rows, path):
     ax.set_xlabel("Displayed liquidity gone by the time an IOC child order arrived")
     ax.set_title("Quote fades by sweep design (E1)", loc="left", color=INK, fontsize=11.5, fontweight="bold")
     fig.tight_layout()
-    fig.savefig(path)
+    fig.savefig(path, metadata={"Date": None})
     plt.close(fig)
 
 
@@ -165,7 +164,7 @@ def fig_markouts(vm, scenario, path):
     ax.set_title("Adverse selection by venue (E2, all posting routers pooled)", loc="left", color=INK,
                  fontsize=11.5, fontweight="bold")
     fig.tight_layout()
-    fig.savefig(path)
+    fig.savefig(path, metadata={"Date": None})
     plt.close(fig)
 
 
@@ -187,7 +186,7 @@ def fig_tactic(rows_by_sched, path):
     fig.suptitle("Crossing the spread vs resting first (E4, 300 seeds)", x=0.01, ha="left", color=INK,
                  fontsize=11.5, fontweight="bold")
     fig.tight_layout()
-    fig.savefig(path)
+    fig.savefig(path, metadata={"Date": None})
     plt.close(fig)
 
 
@@ -195,6 +194,9 @@ def fig_tactic(rows_by_sched, path):
 
 def build_report(results_dir: Path, out_dir: Path, log=print):
     results_dir, out_dir = Path(results_dir), Path(out_dir)
+    # date of the evaluation run (latest finish among the manifests), so the report is reproducible byte for byte
+    finished = [json.loads(p.read_text(encoding="utf-8")).get("finished", "") for p in results_dir.glob("E*/manifest.json")]
+    run_date = max(finished)[:10] if finished else "unknown date"
     figs = out_dir / "figures"
     figs.mkdir(parents=True, exist_ok=True)
     get = _cache(results_dir)
@@ -254,8 +256,8 @@ def build_report(results_dir: Path, out_dir: Path, log=print):
     # ---------------------------------------------------------------- markdown
     W("# Results")
     W("")
-    W(f"Generated {time.strftime('%Y-%m-%d')} by `python -m smartrouter report` from the experiment outputs in "
-      "`results/`. The hypotheses, metric, seeds and decision rules were fixed in "
+    W(f"Built by `python -m smartrouter report` from the evaluation run of {run_date} (outputs in `results/`). "
+      "The hypotheses, metric, seeds and decision rules were fixed in "
       "[the pre-registration](../docs/PREREGISTRATION.md) before any evaluation seed was run. Everything here is "
       "about the simulated market described in [the model](../docs/MODEL.md); nothing is a claim about live trading.")
     W("")
@@ -421,7 +423,7 @@ def build_report(results_dir: Path, out_dir: Path, log=print):
     (out_dir / "RESULTS.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
     # summary for the website demo
-    summ = {"generated": time.strftime("%Y-%m-%d"), "material_bps": MATERIAL, "primary": [], "headline": {}}
+    summ = {"evaluation_run": run_date, "material_bps": MATERIAL, "primary": [], "headline": {}}
     for (hid, key, lab, a, b, text, pr), pa in zip(prim, adj):
         summ["primary"].append({"id": hid, "experiment": key, "run": lab, "strategy": a, "baseline": b, "text": text,
                                 "mean": pr["mean"], "lo": pr["ci_lo"], "hi": pr["ci_hi"], "p_holm": pa,
