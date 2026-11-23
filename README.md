@@ -6,9 +6,10 @@ simulation of a fragmented equity market, eleven routing strategies from naive t
 pre-registered set of experiments that answers the question for that market.
 
 **Live demo:** [rasmuscodes.github.io/projects/smart-router](https://rasmuscodes.github.io/projects/smart-router/)
-runs this Python package in your browser (Pyodide). Seeds 1-300 there reproduce the experiments exactly.
-**Results:** [reports/RESULTS.md](reports/RESULTS.md). **Design frozen before the runs:**
-[docs/PREREGISTRATION.md](docs/PREREGISTRATION.md).
+(write-up with the demo embedded) or [full screen](https://rasmuscodes.github.io/apps/smart-router/). It runs this
+Python package in your browser (Pyodide, CPython compiled to WebAssembly); evaluation seeds 1-300 there reproduce
+the experiments' numbers exactly. **Results:** [reports/RESULTS.md](reports/RESULTS.md). **Design frozen before the
+runs:** [docs/PREREGISTRATION.md](docs/PREREGISTRATION.md).
 
 ## What it found
 
